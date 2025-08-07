@@ -18,9 +18,7 @@ Users can filter the posts by category using a static filter bar.
 ```
 /project-root
 │
-├── index.html        # Main HTML page
-├── style.css         # CSS styling
-├── script.js         # JavaScript filter functionality
+├── index.html        # Main HTML page and contains css and js
 ├── Images/           # Folder containing blog images
 └── Screenshots/      # Folder for README preview image
 ```
