@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Personal Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #212854;
+      color: white;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      max-width: 1000px;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .header-left {
+      max-width: 450px;
+    }
+
+    .header-left h1 {
+      margin-top: 0;
+      font-size: 36px;
+    }
+
+    .header-left p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .header-right img {
+      width: 280px;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .header-right img {
+        margin-top: 20px;
+      }
+    }
+
+    /* FILTER */
+    .filter-bar {
+      text-align: center;
+      margin: 30px 0 20px;
+    }
+
+    .filter-bar button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      background-color: #3498db;
+      color: white;
+      border-radius: 5px;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .filter-bar button.active {
+      background-color: #2c3e50;
+    }
+
+    /* BLOG POSTS */
+    .blog-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      display: flex;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      flex-direction: row;
+    }
+
+    .card img {
+      width: 180px;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .card-content {
+      padding: 15px;
+      flex: 1;
+    }
+
+    .card-content h3 {
+      margin: 0 0 10px;
+    }
+
+    .card-content p {
+      margin: 0 0 10px;
+      color: #555;
+    }
+
+    .card-content small {
+      color: #888;
+    }
+
+    .pagination {
+      display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      .card {
+        flex-direction: column;
+      }
+
+      .card img {
+        width: 100%;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-content">
+    <div class="header-left">
+      <h1>Welcome to My Blog!</h1>
+      <p>Hi there! 👋 I'm Sandy, a computer science student who loves tech, travel, and food. This blog is where I share my experiences, code tips, and favorite recipes. I hope you enjoy reading it as much as I enjoy writing it!</p>
+    </div>
+    <div class="header-right">
+      <img src="Images\BlogImage.png" alt="Cartoon of person at computer">
+    </div>
+  </div>
+</header>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-button active" data-category="All" >All</button>
+  <button class="filter-button" data-category="Tech" >Tech</button>
+  <button class="filter-button" data-category="Travel" >Travel</button>
+  <button class="filter-button" data-category="Food" >Food</button>
+</div>
+
+<!-- BLOG POSTS -->
+<div class="blog-container" id="blogContainer">
+  <!-- Cards added by JavaScript -->
+</div>
+
+<!-- PAGINATION (Hidden) -->
+<div class="pagination" id="pagination"></div>
+
+<script>
+  const posts = [
+    {
+      title: "How JavaScript Works",
+      image: "Images/JavaScript.jpeg",
+      description:
+              "💡 Ever wondered what happens when you click a button on a website?<br>" +
+              "This post breaks down how JavaScript powers the web — from handling events and manipulating HTML to making your pages interactive and dynamic. Learn the basics of how JavaScript runs in the browser and why it’s essential for modern web development!",
+      date: "2025-08-01",
+      category: "Tech"
+    },
+    {
+      title: "My Trip to Paris",
+      image: "Images/Paris.jpeg",
+      description: "Paris, the City of Light, is known for its art, fashion, and café culture. A walk along the Seine or a visit to the Eiffel Tower captures the charm and romance of the French capital." +
+              "I spent a beautiful day in Paris exploring the Eiffel Tower, walking along the Seine, and visiting the Louvre Museum. I enjoyed a peaceful break in the Luxembourg Gardens and ended the day with a cozy dinner of French onion soup and crème brûlée at a local bistro. The city’s charm and energy made it an unforgettable experience.",
+      date: "2025-07-25",
+      category: "Travel"
+    },
+    {
+      title: "Top 5 Pasta ",
+      image: "Images/Pasta.jpeg",
+      description: "Discover the world’s top pasta dishes, starting with creamy Spaghetti Carbonara, a Roman favorite made with eggs, cheese, and crispy guanciale. Dive into rich Bolognese, a slow-cooked meat sauce best served with tagliatelle. Enjoy layers of comfort with Lasagna, packed with meat, béchamel, and cheese. Taste the freshness of Pesto alla Genovese, a vibrant basil sauce from Genoa, and savor the simplicity of Cacio e Pepe, a bold Roman dish made with just cheese and black pepper. Each dish is a delicious journey through Italian tradition! ",
+      date: "2025-07-20",
+      category: "Food"
+    },
+    {
+      title: "React vs Angular",
+      image: "Images/ReactvsAngular.jpeg",
+      description: "React is a flexible JavaScript library focused on building UI components, while Angular is a full-fledged framework with built-in tools for routing, state management, and form handling. React is lightweight and easier to integrate, while Angular offers a complete, opinionated structure.",
+      date: "2025-07-10",
+      category: "Tech"
+    },
+    {
+      title: "Backpacking in Tokyo",
+      image: "Images/Tokyo.jpeg",
+      description: "My Tokyo journey was a thrilling blend of tradition and tech — from peaceful mornings at Meiji Shrine to late-night ramen in Shinjuku’s neon alleys. I wandered through anime shops in Akihabara, admired cherry blossoms in Ueno Park, and got lost (happily) in the energy of this unforgettable city." ,
+      date: "2025-06-30",
+      category: "Travel"
+    },
+    {
+      title: "Homemade Pizza Guide",
+      image: "Images/Pizza.jpeg",
+      description: "In this quick and easy Homemade Pizza Guide, I share how I made the perfect pizza from scratch—fluffy golden crust, rich tomato sauce, and melty mozzarella, all topped with your favorite ingredients. Whether you're a first-time cook or a kitchen pro, this step-by-step recipe turns your kitchen into a mini pizzeria. Ready to impress your taste buds? Let's bake it up! Ingredients:\n" +
+              "For the Dough:<br>" +
+              "2 ¼ tsp active dry yeast (1 packet)\n<br>" +
+              "1 ½ cups warm water (not hot)<br>" +
+              "3 ½ cups all-purpose flour<br>" +
+              "2 tbsp olive oil<br>" +
+              "1 tsp salt<br>" ,
+      date: "2025-06-15",
+      category: "Food"
+    },
+
+  ];
+
+  const blogContainer = document.getElementById("blogContainer");
+  const filterButtons = document.querySelectorAll(".filter-button");
+
+  const POSTS_PER_PAGE = 3;
+  let currentCategory = "All";
+  let currentIndex = 0;
+
+  function renderPosts() {
+    blogContainer.innerHTML = "";
+
+    const filteredPosts = currentCategory === "All"
+            ? posts
+            : posts.filter(post => post.category === currentCategory);
+
+    const visiblePosts = filteredPosts.slice(0, currentIndex + POSTS_PER_PAGE);
+
+    visiblePosts.forEach(post => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${post.image}" alt="${post.title}">
+        <div class="card-content">
+          <h3>${post.title}</h3>
+          <p>${post.description}</p>
+          <small>${post.date}</small>
+        </div>
+      `;
+      blogContainer.appendChild(card);
+    });
+
+    if (visiblePosts.length < filteredPosts.length) {
+      showLoadMoreButton();
+    } else {
+      hideLoadMoreButton();
+    }
+  }
+
+  function showLoadMoreButton() {
+    if (!document.getElementById("loadMoreBtn")) {
+      const btn = document.createElement("button");
+      btn.id = "loadMoreBtn";
+      btn.textContent = "Load More";
+      btn.style.display = "block";
+      btn.style.margin = "20px auto";
+      btn.style.padding = "10px 20px";
+      btn.style.backgroundColor = "#3498db";
+      btn.style.color = "#fff";
+      btn.style.border = "none";
+      btn.style.borderRadius = "5px";
+      btn.style.cursor = "pointer";
+
+      btn.addEventListener("click", () => {
+        currentIndex += POSTS_PER_PAGE;
+        renderPosts();
+      });
+
+      document.body.appendChild(btn);
+    }
+  }
+
+  function hideLoadMoreButton() {
+    const btn = document.getElementById("loadMoreBtn");
+    if (btn) btn.remove();
+  }
+
+  filterButtons.forEach(button => {
+    button.disabled = false;
+    button.addEventListener("click", () => {
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+      currentCategory = button.dataset.category;
+      currentIndex = 0;
+      renderPosts();
+    });
+  });
+
+  renderPosts();
+</script>
+
+</body>
+</html>
