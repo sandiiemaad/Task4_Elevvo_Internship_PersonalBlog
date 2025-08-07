@@ -15,12 +15,15 @@ Users can filter the posts by category using a static filter bar.
 
 ## 📂 Project Structure
 
+```
 /project-root
 │
-├── index.html        # Main HTML page and contain CSS and JS
+├── index.html        # Main HTML page
+├── style.css         # CSS styling
+├── script.js         # JavaScript filter functionality
 ├── Images/           # Folder containing blog images
 └── Screenshots/      # Folder for README preview image
-
+```
 
 ## 📸 Preview
 
