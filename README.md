@@ -24,9 +24,10 @@ Users can filter the posts by category using a static filter bar.
 
 ## 📸 Preview
 
-![Blog Homepage Preview](Screenshots/ScreenShot1.png)
-![Blog Homepage Preview](Screenshots/ScreenShot2.png)
-![Blog Homepage Preview](Screenshots/ScreenShot3.png)
+>![image alt](Screenshots/ScreenShot1.png)
+>![Blog Homepage Preview](Screenshots/ScreenShot2.png)
+>![Blog Homepage Preview](Screenshots/ScreenShot3.png)
+
 
 
 
