@@ -24,7 +24,7 @@ Users can filter the posts by category using a static filter bar.
 
 ## 📸 Preview
 
->![image alt](Screenshots/ScreenShot1.png)
+>![image alt](https://github.com/sandiiemaad/Task4_Elevvo_Internship_PersonalBlog/blob/3a9ddea4c990b834cdea653c56e819e2b2faafa9/Screenshots/Screenshot1.png)
 >![Blog Homepage Preview](Screenshots/ScreenShot2.png)
 >![Blog Homepage Preview](Screenshots/ScreenShot3.png)
 
